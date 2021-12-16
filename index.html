@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!--
+    If you are serving your web app in a path other than the root, change the
+    href value below to reflect the base path you are serving from.
+
+    The path provided below has to start and end with a slash "/" in order for
+    it to work correctly.
+
+    Fore more details:
+    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
+  -->
+  <base href="/">
+
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="A new Flutter project.">
+
+  <style>
+    .modal.modal-fullscreen .modal-dialog,
+    .modal.modal-fullscreen .modal-content {
+      bottom: 0;
+      left: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+    .modal.modal-fullscreen .modal-dialog {
+      margin: 0;
+      width: 90%;
+      height: 90%;
+      animation-duration: 0.6s;
+    }
+
+    .modal.modal-fullscreen .modal-content {
+      border: none;
+      -moz-border-radius: 0;
+      border-radius: 0;
+      -webkit-box-shadow: inherit;
+      -moz-box-shadow: inherit;
+      -o-box-shadow: inherit;
+      box-shadow: inherit;
+    }
+    .modal.modal-fullscreen.force-fullscreen .modal-body { padding: 0; }
+    .modal.modal-fullscreen.force-fullscreen .modal-header,
+    .modal.modal-fullscreen.force-fullscreen .modal-footer {
+      position: absolute;
+      bottom: 0;
+    }
+    .modal.modal-fullscreen.force-fullscreen .modal-header {
+      top: 0;
+    }
+    .modal-body {
+      height: 90%;
+    }
+
+  </style>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+  
+
+  <!-- iOS meta tags & icons -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="notaria_mm">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png"/>
+
+  <title>notaria_mm</title>
+  <link rel="manifest" href="manifest.json">
+</head>
+<body id="app-container">
+
+  <!-- This script installs service_worker.js to provide PWA functionality to
+       application. For more information, see:
+       https://developers.google.com/web/fundamentals/primers/service-workers -->
+  
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('flutter-first-frame', function () {
+        navigator.serviceWorker.register('flutter_service_worker.js?v=726959662');
+      });
+    }
+  </script>
+  <script src="main.dart.js" type="application/javascript"></script>
+
+  <a id="triggerPdfViewer" data-toggle="modal" data-target="#myModal"></a>
+  <div id="myModal" class="modal fade modal-fullscreen" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">x</button>
+          <h4 class="modal-title" style="color: black;">Document Viewer</h4>
+        </div>
+        <div class="modal-body" id="pdfContainer">
+          <!-- iframe with src as base64 data -->
+        </div>
+        <div class="modal-footer" style="display: none;"></div>
+      </div>
+    </div>
+  </div>
+
+
+</body>
+</html>
